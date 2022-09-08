@@ -9,6 +9,7 @@
 <body>
     @php
         $data = DB::table('participants')->where('user_id',Auth::id())->first();
+        $partcData = DB::table('participants')->select('*')->get();
     @endphp
     <table>
         <tr>
@@ -20,6 +21,22 @@
             <td>{{Auth::user()->id}}</td>
         </tr>
     </table>
+
+    <br>
+    <table>
+        <tr>
+            <td>user_id</td>
+            <td>c_user_id</td>
+        </tr>
+        @foreach ($partcData as $item)
+           
+            <tr>
+                <td>{{$item->user_id}}</td>
+                <td>{{$item->c_user_id}}</td>
+            </tr>
+        @endforeach
+    </table>
+
     @if(!$data)
         <a href="javascript:void(0)" id="participate">Participate</a>
     @else
