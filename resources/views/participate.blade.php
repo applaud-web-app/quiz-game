@@ -10,6 +10,16 @@
     @php
         $data = DB::table('participants')->where('user_id',Auth::id())->first();
     @endphp
+    <table>
+        <tr>
+            <td>name</td>
+            <td>{{Auth::user()->name}}</td>
+        </tr>
+        <tr>
+            <td>UserId</td>
+            <td>{{Auth::user()->id}}</td>
+        </tr>
+    </table>
     @if(!$data)
         <a href="javascript:void(0)" id="participate">Participate</a>
     @else
