@@ -16,4 +16,4 @@ mix.js('resources/js/app.js', 'public/js')
         //
     ]);
 
-mix.js('resources/js/participate.js', 'public/js');
+mix.js('resources/js/participate.js', 'public/js').version();
