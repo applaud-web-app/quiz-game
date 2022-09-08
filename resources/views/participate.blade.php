@@ -44,17 +44,19 @@
     @endif
 
 <script>
-    var userId = "{{Auth::id()}}";
+    var userId = parseInt("{{Auth::id()}}");
 </script>
 <script src="{{ mix('js/participate.js') }}"></script>
 <script>
-    document.getElementById('participate').addEventListener("click",function(){
-        fetch('{{url("store-participate")}}')
-        .then((response) => response.json())
-        .then((data) => {
-            document.getElementById('participate').innerText = "Looking For Participants";
+    if(document.getElementById('participate')){
+        document.getElementById('participate').addEventListener("click",function(){
+            fetch('{{url("store-participate")}}')
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById('participate').innerText = "Looking For Participants";
+            });
         });
-    });
+    }
 </script>
 </body>
 </html>
