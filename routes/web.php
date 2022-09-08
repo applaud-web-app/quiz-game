@@ -93,7 +93,7 @@ Route::get('store-participate',function(){
 });
 
 Route::get('delete',function(){
-    \DB::table('users')->delete();
+    // \DB::table('users')->delete();
     \DB::table('participants')->delete();
 });
 
