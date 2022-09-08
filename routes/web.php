@@ -84,15 +84,16 @@ Route::get('store-participate',function(){
         \DB::table('participants')->where('user_id',Auth::id())->update(['c_user_id'=>$checkPartcipant->user_id]);
         $data = [
             'com_id'=>$checkPartcipant->user_id,
+            'user_id'=>\Auth::id(),
             'url'=>url('play-game')
         ];
         event(new \App\Events\ParticipantEvent($data));
-        return redirect('play-game');
     }
-    return redirect('participate');
+    return response()->json(['r'=>1]);
 });
 
 Route::get('delete',function(){
     \DB::table('users')->delete();
+    \DB::table('participants')->delete();
 });
 

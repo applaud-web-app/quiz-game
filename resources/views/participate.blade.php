@@ -11,7 +11,7 @@
         $data = DB::table('participants')->where('user_id',Auth::id())->first();
     @endphp
     @if(!$data)
-        <a href="{{url('store-participate')}}">Participate</a>
+        <a href="javascript:void(0)" id="participate">Participate</a>
     @else
         <a href="javascript:void(0)">Looking For Participants</a>
     @endif
@@ -20,6 +20,14 @@
     var userId = "{{Auth::id()}}";
 </script>
 <script src="{{ mix('js/participate.js') }}"></script>
-
+<script>
+    document.getElementById('participate').addEventListener("click",function(){
+        fetch('{{url("store-participate")}}')
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById('participate').innerText = "Looking For Participants";
+        });
+    });
+</script>
 </body>
 </html>
